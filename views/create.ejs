@@ -1,0 +1,38 @@
+<% include partials/header %>
+    <div class="container">
+
+        <form method="POST" action="/viewNewNote">
+
+            <label>Your Email</label>
+            <input class="form-control mr-sm-2" type="text" name="email">
+            <br>
+            <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4" cols="50"></textarea>
+
+            <script>
+                var simplemde = new SimpleMDE({
+                    element: document.getElementById("main_text")
+                });
+            </script>
+            <!--  UNEEDED FOR NOW BUT WILL BE USEFULE LATER <div id="preview"> </div>
+            <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">Type **Markdown** here.</textarea>
+
+            <script src="node_modules/markdown/lib/markdown.js"></script>
+            <script>
+                function Editor(input, preview) {
+                    this.update = function() {
+                        preview.innerHTML = markdown.toHTML(input.value);
+                    };
+                    input.editor = this;
+                    this.update();
+                }
+                var $ = function(id) {
+                    return document.getElementById(id);
+                };
+                new Editor($("main_text"), $("preview"));
+            </script>
+            <input type="submit" value="Submit"> -->
+
+        </form>
+
+    </div>
+    <% include partials/footer %>
