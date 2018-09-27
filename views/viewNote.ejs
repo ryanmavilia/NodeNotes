@@ -1,5 +1,6 @@
 <% include partials/header %>
     <div class="container">
+    <div id="content"></div>
         <script>
             document.getElementById("content").innerHTML = marked(<%- JSON.stringify(note_body) %>);
         </script>
