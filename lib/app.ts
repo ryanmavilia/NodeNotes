@@ -11,7 +11,6 @@ db.on("error", console.error.bind(console, "connection error:"));
 
 const notesSchema = new mongoose.Schema({
     body: String,
-    email: String,
 });
 
 // Create the model for the note based on the schema
@@ -60,7 +59,7 @@ class App {
         // After submitting new note user is brought to this page to see it
         router.post("/viewNewNote", (req: Request, res: Response) => {
 
-            const newNote = new Note({ body: req.body.main_text, email: req.body.email });
+            const newNote = new Note({ body: req.body.main_text });
 
             // Insert new note into mongo and render the created note view
             newNote.save((err, savedNote) => {
@@ -80,7 +79,6 @@ class App {
                 // If note saved correctly we render it with the viewNote page
                 res.render("viewNote", {
                     note_body: foundNote.body,
-                    note_email: foundNote.email,
                 });
             }
             });

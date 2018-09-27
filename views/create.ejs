@@ -1,14 +1,8 @@
 <% include partials/header %>
-
-    // Form that posts to viewNewNote which will save and render the note
+    <-- Form that posts to viewNewNote which will save and render the note -->
     <form method="POST" action="/viewNewNote">
         <div class="container">
-        // Get users email and create a markdown editor inside a <textarea>
-            <label>Your Email</label>
-            <input class="form-control mr-sm-2" type="text" name="email">
-            <br>
             <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4"></textarea>
-
             <script>
                 var simplemde = new SimpleMDE({
                     autofocus: true,
@@ -28,9 +22,7 @@
                     tabSize: 4,
                 });
             </script>
-            <input type="submit" value="Submit">
-
+        <input type="submit" value="Submit">
     </form>
-
     </div>
 <% include partials/footer %>

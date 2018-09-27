@@ -1,11 +1,7 @@
 <% include partials/header %>
-
     <div class="container">
-
-        <%- note_email %>
-
-            <script>
-                document.getElementById("content").innerHTML = marked(<%- JSON.stringify(note_body) %>);
-            </script>
+        <script>
+            document.getElementById("content").innerHTML = marked(<%- JSON.stringify(note_body) %>);
+        </script>
     </div>
-    <% include partials/footer %>
+<% include partials/footer %>
