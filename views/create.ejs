@@ -1,38 +1,36 @@
 <% include partials/header %>
-    <div class="container">
 
-        <form method="POST" action="/viewNewNote">
-
+    // Form that posts to viewNewNote which will save and render the note
+    <form method="POST" action="/viewNewNote">
+        <div class="container">
+        // Get users email and create a markdown editor inside a <textarea>
             <label>Your Email</label>
             <input class="form-control mr-sm-2" type="text" name="email">
             <br>
-            <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4" cols="50"></textarea>
+            <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4"></textarea>
 
             <script>
                 var simplemde = new SimpleMDE({
-                    element: document.getElementById("main_text")
+                    autofocus: true,
+                    autosave: {
+                        enabled: true,
+                        uniqueId: "CreateNewNote",
+                        delay: 1000,
+                    },
+                    element: document.getElementById("main_text"),
+                    forceSync: true,
+                    placeholder: "Type here...",
+                    promptURLs: true,
+                    renderingConfig: {
+                        singleLineBreaks: false,
+                        codeSyntaxHighlighting: true,
+                    },
+                    tabSize: 4,
                 });
             </script>
-            <!--  UNEEDED FOR NOW BUT WILL BE USEFULE LATER <div id="preview"> </div>
-            <textarea id="text-input" oninput="this.editor.update()" rows="6" cols="60">Type **Markdown** here.</textarea>
+            <input type="submit" value="Submit">
 
-            <script src="node_modules/markdown/lib/markdown.js"></script>
-            <script>
-                function Editor(input, preview) {
-                    this.update = function() {
-                        preview.innerHTML = markdown.toHTML(input.value);
-                    };
-                    input.editor = this;
-                    this.update();
-                }
-                var $ = function(id) {
-                    return document.getElementById(id);
-                };
-                new Editor($("main_text"), $("preview"));
-            </script>
-            <input type="submit" value="Submit"> -->
-
-        </form>
+    </form>
 
     </div>
-    <% include partials/footer %>
+<% include partials/footer %>
