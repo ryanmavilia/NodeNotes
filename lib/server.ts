@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import app from "./app";
-const port = 4040;
+const port = 8080;
 
 // Run the app on the specified port
 app.listen(port, () => {
