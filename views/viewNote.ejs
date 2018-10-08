@@ -47,20 +47,9 @@
             <div class="col-md-8 order-md-1">
 
                 <div class="mb-3">
-                <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4" readonly><%- note_body %></textarea>
+                <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4"><%- note_body %></textarea>
                 <script>
-                    var simplemde = new SimpleMDE({
-                        autofocus: true,
-                        element: document.getElementById("main_text"),
-                        placeholder: "Type here...",
-                        promptURLs: true,
-                        renderingConfig: {
-                            singleLineBreaks: false,
-                            codeSyntaxHighlighting: true,
-                        },
-                        tabSize: 4,
-                        toolbar: false,
-                    }).togglePreview();
+                    var simplemde = new SimpleMDE().togglePreview();
                 </script>
                 </div>
             </div>
