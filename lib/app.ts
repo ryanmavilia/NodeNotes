@@ -93,7 +93,7 @@ class App {
                 if (err) {
                     console.error(err);
                 } else {
-                // If note saved correctly we render it with the viewNote page
+                // If note saved correctly we render it with the editNote page
                 res.render("editNote", {
                     note_body: foundNote.body,
                     note_id: id,

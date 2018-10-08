@@ -47,45 +47,21 @@
             <div class="col-md-8 order-md-1">
 
                 <div class="mb-3">
-                    <textarea id="demo1"># Intro
-                        Go ahead, play around with the editor! Be sure to check out **bold** and *italic* styling, or even [links](https://google.com). You can type the Markdown syntax, use the toolbar, or use shortcuts like `cmd-b` or `ctrl-b`.
-                        
-                        ## Lists
-                        Unordered lists can be started using the toolbar or by typing `* `, `- `, or `+ `. Ordered lists can be started by typing `1. `.
-                        
-                        #### Unordered
-                        * Lists are a piece of cake
-                        * They even auto continue as you type
-                        * A double enter will end them
-                        * Tabs and shift-tabs work too
-                        
-                        #### Ordered
-                        1. Numbered lists...
-                        2. ...work too!
-                        
-                        ## What about images?
-                        ![Yes](https://i.imgur.com/sZlktY7.png)</textarea>
-                    <script>
-                        new SimpleMDE({
-                            element: document.getElementById("demo1"),
-                            spellChecker: false,
-                        });
-
-                        new SimpleMDE({
-                            element: document.getElementById("demo2"),
-                            spellChecker: false,
-                            autosave: {
-                                enabled: true,
-                                unique_id: "demo2",
-                            },
-                        });
-
-                        new SimpleMDE({
-                            element: document.getElementById("demo3"),
-                            status: false,
-                            toolbar: false,
-                        });
-                    </script>
+                <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4" readonly><%- note_body %></textarea>
+                <script>
+                    var simplemde = new SimpleMDE({
+                        autofocus: true,
+                        element: document.getElementById("main_text"),
+                        placeholder: "Type here...",
+                        promptURLs: true,
+                        renderingConfig: {
+                            singleLineBreaks: false,
+                            codeSyntaxHighlighting: true,
+                        },
+                        tabSize: 4,
+                        toolbar: false,
+                    }).togglePreview();
+                </script>
                 </div>
             </div>
 

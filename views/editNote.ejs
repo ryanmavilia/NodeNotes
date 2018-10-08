@@ -2,9 +2,7 @@
     <!-- Form that posts to viewNewNote which will save and render the note -->
     <form method="POST" action="/updateNote/<%- note_id %>">
         <div class="container">
-            <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4">
-                <%_ note_body %>
-            </textarea>
+            <textarea id="main_text" name="main_text" oninput="this.editor.update()" rows="4"><%- note_body %></textarea>
             <script>
                 var simplemde = new SimpleMDE({
                     autofocus: true,
