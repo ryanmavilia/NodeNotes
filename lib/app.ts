@@ -79,6 +79,51 @@ class App {
                 // If note saved correctly we render it with the viewNote page
                 res.render("viewNote", {
                     note_body: foundNote.body,
+                    note_id: id,
+                });
+            }
+            });
+        });
+
+        // Edit a note
+        router.get("/edit/:id", (req: Request, res: Response) => {
+            const id = req.params.id;
+            // Find the note by id and send that info to EJS viewing template
+            Note.findById(id, (err, foundNote) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                // If note saved correctly we render it with the viewNote page
+                res.render("editNote", {
+                    note_body: foundNote.body,
+                    note_id: id,
+                });
+            }
+            });
+        });
+
+        router.get("/test", (req: Request, res: Response) => {
+            res.render("test", {
+            });
+        });
+
+        // Update edited note
+        router.post("/updateNote/:id", (req: Request, res: Response) => {
+
+            const id = req.params.id;
+            // Find the note by id and send that info to EJS viewing template
+            Note.findById(id, (err, foundNote) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                foundNote.body = req.body.main_text;
+                foundNote.save((err2, savedNote) => {
+                    if (err) {
+                        console.error(err2);
+                    } else {
+                    const noteLocation = "/view/".concat(savedNote.id);
+                    res.redirect(noteLocation);
+                    }
                 });
             }
             });

@@ -5,37 +5,86 @@
         <br>
         <div class="row">
             <div class="col-md-4 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Share </span>
-                </h4>
-                <form class="card p-2">
+
+                <form method="GET" action="/edit/<%- note_id %>" class="card p-2">
+                    <ul class="list-group mb-3">
+                        <li class="d-flex justify-content-between lh-condensed">
+                            <div class="input-group">
+                                <span class="display-4 text-center text-dark">Share </span>
+                            </div>
+                        </li>
+                        <li class="d-flex justify-content-between lh-condensed">
+                            <div class="input-group">
+
+
+                                <input type="text" class="form-control" value="" id="copyInput">
+
+                                <script>
+                                    document.getElementById("copyInput").value = window.location.href;
+
+
+                                    function myFunction() {
+                                        var copyText = document.getElementById("copyInput");
+                                        copyText.select();
+                                        document.execCommand("copy");
+                                    }
+                                </script>
+                                <div class="input-group-append">
+                                    <button type="button" onclick="myFunction()" class="btn btn-secondary btn-block">Copy</button>
+                                </div>
+                            </div>
+                        </li>
+                </form>
+                <li class="d-flex justify-content-between lh-condensed">
                     <div class="input-group">
 
+                        <button type="submit" class="btn btn-primary btn-block">Edit</button>
 
-                        <input type="text" value="" id="copyInput">
-
-                        <script>
-                            document.getElementById("copyInput").value = window.location.href;
-
-
-                            function myFunction() {
-                                var copyText = document.getElementById("copyInput");
-                                copyText.select();
-                                document.execCommand("copy");
-                            }
-                        </script>
-                        <div class="input-group-append">
-                            <button type="button" onclick="myFunction()" class="btn btn-secondary">Copy</button>
-                        </div>
                     </div>
-
+                </li>
+                </form>
             </div>
             <div class="col-md-8 order-md-1">
 
                 <div class="mb-3">
-                    <div id="content"></div>
+                    <textarea id="demo1"># Intro
+                        Go ahead, play around with the editor! Be sure to check out **bold** and *italic* styling, or even [links](https://google.com). You can type the Markdown syntax, use the toolbar, or use shortcuts like `cmd-b` or `ctrl-b`.
+                        
+                        ## Lists
+                        Unordered lists can be started using the toolbar or by typing `* `, `- `, or `+ `. Ordered lists can be started by typing `1. `.
+                        
+                        #### Unordered
+                        * Lists are a piece of cake
+                        * They even auto continue as you type
+                        * A double enter will end them
+                        * Tabs and shift-tabs work too
+                        
+                        #### Ordered
+                        1. Numbered lists...
+                        2. ...work too!
+                        
+                        ## What about images?
+                        ![Yes](https://i.imgur.com/sZlktY7.png)</textarea>
                     <script>
-                        document.getElementById("content").innerHTML = marked(<%- JSON.stringify(note_body) %>);
+                        new SimpleMDE({
+                            element: document.getElementById("demo1"),
+                            spellChecker: false,
+                        });
+
+                        new SimpleMDE({
+                            element: document.getElementById("demo2"),
+                            spellChecker: false,
+                            autosave: {
+                                enabled: true,
+                                unique_id: "demo2",
+                            },
+                        });
+
+                        new SimpleMDE({
+                            element: document.getElementById("demo3"),
+                            status: false,
+                            toolbar: false,
+                        });
                     </script>
                 </div>
             </div>
